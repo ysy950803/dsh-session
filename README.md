@@ -34,6 +34,28 @@ session-3db4fe78-dc1b-4d69-8e62-efbee7376ab5  2026-10-29 15:37   59 KB     活�
 它不修改 `dsh` 本体，也不依赖任何 npm 包。`dsh` 每次升级会替换自己的 bundle，
 对这个工具没有影响。
 
+## 和 dsh 插件相比
+
+dsh 的 UI 插件只能跑在 dsh 进程里：要先打开界面，再用鼠标点。agent 和脚本没法可靠地驱动它。
+
+`dsh-session` 是一个普通命令行程序，优势正好在这里：
+
+| | `dsh-session` CLI | dsh UI 插件 |
+| --- | --- | --- |
+| agent 调用 | 直接执行 shell 命令 | 需要打开 dsh，人工点界面 |
+| 自动化 | `--json` 输出，可接脚本 / CI / cron | 只能交互操作 |
+| 运行依赖 | 零依赖，单独一个可执行文件 | 依赖 dsh UI 运行时 |
+| 安全网 | `--dry-run`、`--trash`、manifest | 取决于插件实现 |
+
+例如 Claude Code、Cursor 这类 agent 可以直接执行：
+
+```bash
+dsh-session list --json
+dsh-session delete 7d6ce8a5 --trash --yes
+```
+
+不需要退出当前工作流去开 dsh，也不用手动把会话 ID 从界面上抄下来。
+
 ## 功能
 
 - `list`：列出全部会话，显示 ID、创建时间、大小、活跃状态和标题
@@ -342,8 +364,9 @@ dsh-session delete <id-prefix> --trash
 ```
 
 Highlights: prefix / substring ID matching, subagent cascade, `session.lock` liveness checks via
-`lsof`, dry-run, trash with a restore manifest, and JSON output. Requires Node.js >= 18 on
-macOS/Linux.
+`lsof`, dry-run, trash with a restore manifest, and JSON output. Unlike dsh UI plugins, it is a
+plain CLI, so agents and scripts can call it directly without opening dsh. Requires Node.js >= 18
+on macOS/Linux.
 
 ## License
 
