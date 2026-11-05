@@ -94,6 +94,16 @@ function seed(t) {
   return { home, dirs };
 }
 
+test('--version matches package.json', () => {
+  const pkg = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'),
+  );
+  const r = run(['--version'], null);
+
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.stdout.trim(), pkg.version);
+});
+
 test('list --json reports titles, sizes and parent links', (t) => {
   const { home } = seed(t);
   const r = run(['list', '--json'], home);

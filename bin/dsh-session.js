@@ -26,7 +26,13 @@ const zlib = require('node:zlib');
 const { execFileSync } = require('node:child_process');
 const readline = require('node:readline/promises');
 
-const VERSION = '1.0.0';
+let VERSION = '1.0.2';
+try {
+  // Installed from npm: keep --version in sync with package.json.
+  VERSION = require('../package.json').version;
+} catch {
+  // Standalone single-file install: fall back to the embedded version.
+}
 const LOG_RE = /^session(?:\.v(\d+))?\.jsonl(?:\.zstd)?$/;
 
 function resolveDshHome(cliRoot) {

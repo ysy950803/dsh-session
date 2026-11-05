@@ -99,7 +99,7 @@ node /path/to/dsh-session/bin/dsh-session.js list
 
 ```bash
 dsh-session --version
-# 1.0.1
+# 1.0.2
 ```
 
 ## 快速开始
