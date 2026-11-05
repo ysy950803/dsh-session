@@ -1,0 +1,34 @@
+{
+  "name": "dsh-session",
+  "version": "1.0.0",
+  "description": "List, inspect and delete DeepSeek Harness (dsh) sessions. Zero-dependency CLI.",
+  "bin": {
+    "dsh-session": "bin/dsh-session.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek",
+    "deepseek-harness",
+    "session",
+    "cli",
+    "cleanup"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ysy950803/dsh-session.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ysy950803/dsh-session/issues"
+  },
+  "homepage": "https://github.com/ysy950803/dsh-session#readme"
+}
