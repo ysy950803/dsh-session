@@ -1,5 +1,5 @@
 {
-  "name": "dsh-session",
+  "name": "dsh-session-cli",
   "version": "1.0.0",
   "description": "List, inspect and delete DeepSeek Harness (dsh) sessions. Zero-dependency CLI.",
   "bin": {

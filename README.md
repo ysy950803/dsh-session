@@ -1,6 +1,7 @@
 # dsh-session
 
 [![CI](https://github.com/ysy950803/dsh-session/actions/workflows/ci.yml/badge.svg)](https://github.com/ysy950803/dsh-session/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/dsh-session-cli.svg)](https://www.npmjs.com/package/dsh-session-cli)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org/)
 
@@ -59,7 +60,21 @@ session-3db4fe78-dc1b-4d69-8e62-efbee7376ab5  2026-10-29 15:37   59 KB     活�
 
 ## 安装
 
-从源码安装（推荐）：
+从 npm 安装（推荐）：
+
+```bash
+npm install -g dsh-session-cli
+```
+
+> 包名是 `dsh-session-cli`，安装后的命令名是 `dsh-session`。
+
+也可以不安装，直接用 `npx`：
+
+```bash
+npx dsh-session-cli list
+```
+
+从源码安装 / 开发：
 
 ```bash
 git clone https://github.com/ysy950803/dsh-session.git
@@ -318,8 +333,7 @@ A zero-dependency CLI to **list, inspect and delete DeepSeek Harness (`dsh`) ses
 on-disk layout under `$DSH_HOME` (default `~/.dsh`), which survives `dsh` upgrades.
 
 ```bash
-git clone https://github.com/ysy950803/dsh-session.git
-cd dsh-session && npm link
+npm install -g dsh-session-cli
 
 dsh-session list
 dsh-session show <id-prefix>
